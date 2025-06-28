@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>GrantWriterAI - Home</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="nav-flex">
+      <div class="logo">GrantWriter<span class="logo-accent">AI</span></div>
+      <button class="btn-login">My Account</button>
+    </div>
+  </nav>
+  <svg class="tech-accent" width="340" height="340" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="170" cy="170" r="170" fill="url(#paint0_radial)"/>
+    <defs>
+      <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientTransform="translate(170 170) scale(170)" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#22b14c" stop-opacity="0.18"/>
+        <stop offset="1" stop-color="#1976d2" stop-opacity="0.12"/>
+      </radialGradient>
+    </defs>
+  </svg>
+  <main class="home-container">
+    <div class="stepper">
+      <span class="active">Title</span>
+      <span class="stepper-arrow">→</span>
+      <span>Information</span>
+      <span class="stepper-arrow">→</span>
+      <span>Grant!</span>
+    </div>
+    <section class="new-proposal-section">
+      <h2>New Grant Proposal</h2>
+      <p>Get started on a new grant proposal. Simply begin by titling your proposal and click the next arrow to begin filling in the information needed to get started!</p>
+      <form class="proposal-form" id="proposalForm">
+        <input type="text" id="grantTitleInput" placeholder="Grant Proposal Title..." />
+        <button class="btn-get-started" type="submit">Next</button>
+      </form>
+    </section>
+    <section class="my-grants-section">
+      <h3>My Grants</h3>
+      <div class="my-grants-list">
+        <!-- Example grant items (replace with dynamic content as needed) -->
+        <span>No grants yet. Start your first proposal above!</span>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.getElementById('proposalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = document.getElementById('grantTitleInput').value.trim();
+      if (title) {
+        localStorage.setItem('grantTitle', title);
+        window.location.href = 'writing_prompts.html';
+      } else {
+        alert('Please enter a grant proposal title.');
+      }
+    });
+  </script>
+</body>
+</html> 
+

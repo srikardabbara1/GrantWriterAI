@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>GrantWriterAI - Grant Prompts</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="nav-flex">
+      <div class="logo">GrantWriter<span class="logo-accent">AI</span></div>
+      <button class="btn-login">My Account</button>
+    </div>
+  </nav>
+  <main class="home-container" style="max-width: 900px;">
+    <h1 class="grant-title">{{GRANT_TITLE}}</h1>
+    <form class="grant-inputs-form">
+      <div class="form-grid">
+        <!-- Left Column -->
+        <div class="form-col">
+          <section>
+            <h3>BASIC APPLICANT INFORMATION</h3>
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Organization / institution (if applicable)">
+            <input type="text" placeholder="Role or Title">
+            <input type="text" placeholder="Contact Info">
+            <input type="text" placeholder="Linkedin, or Personal Website (optional but useful)">
+          </section>
+          <section>
+            <h3>GRANT TYPE & CONTEXT</h3>
+            <select><option>What type of grant is this?</option></select>
+            <input type="text" placeholder="Project start program or agency name">
+            <input type="text" placeholder="Application deadline">
+          </section>
+          <section>
+            <h3>PROJECT SUMMARY</h3>
+            <input type="text" placeholder="Project Title">
+            <input type="text" placeholder="One-liner elevator pitch">
+            <input type="text" placeholder="Project start and end dates">
+            <select><option>Amount or funding requested</option></select>
+          </section>
+          <section>
+            <h3>METHODOLOGY (PROJECT PLAN)</h3>
+            <input type="text" placeholder="What will be done?">
+            <input type="text" placeholder="How will it be done?">
+            <input type="text" placeholder="Timeline or milestones">
+          </section>
+          <section>
+            <h3>TEAM & CAPABILITIES</h3>
+            <input type="text" placeholder="Who is on the team? What are their roles and qualifications?">
+            <input type="text" placeholder="Past experience relevant to this project">
+          </section>
+          <section>
+            <h3>BUDGET OVERVIEW</h3>
+            <input type="text" placeholder="Total budget">
+            <input type="text" placeholder="Funding requested">
+            <input type="text" placeholder="Breakdown by category (e.g., Personnel, Equipment, Travel, Overhead, etc.)">
+            <input type="text" placeholder="Any matching or in-kind contributions?">
+          </section>
+        </div>
+        <!-- Right Column -->
+        <div class="form-col">
+          <section>
+            <h3>PROBLEM STATEMENT</h3>
+            <input type="text" placeholder="What problem or need does this project address?">
+            <input type="text" placeholder="Why is this issue important or urgent?">
+            <input type="text" placeholder="Who is affected and how?">
+          </section>
+          <section>
+            <h3>GOALS & OBJECTIVES</h3>
+            <input type="text" placeholder="Primary goal of the project">
+            <input type="text" placeholder="2-3 specific, measurable objectives">
+            <input type="text" placeholder="Tools, technologies, or techniques involved">
+          </section>
+          <section>
+            <h3>BUDGET OVERVIEW</h3>
+            <input type="text" placeholder="Total budget">
+            <input type="text" placeholder="Funding requested">
+            <input type="text" placeholder="Breakdown by category (e.g., Personnel, Equipment, Travel, Overhead, etc.)">
+            <input type="text" placeholder="Any matching or in kind contributions?">
+          </section>
+          <section>
+            <h3>OUTCOMES & IMPACT</h3>
+            <input type="text" placeholder="Expected results">
+            <input type="text" placeholder="Who benefits and how?">
+            <input type="text" placeholder="How will success be measured?">
+            <input type="text" placeholder="Long-term sustainability or scalability">
+          </section>
+          <section>
+            <h3>COMPLIANCE / ALIGNMENT</h3>
+            <input type="text" placeholder="How does this align with the funder's priorities or mission?">
+            <input type="text" placeholder="Any ethical, environmental, or regulatory considerations?">
+          </section>
+        </div>
+      </div>
+      <div class="supporting-material-section">
+        <h3 style="text-align:center; margin:2.5rem 0 1.2rem 0;">SUPPORTING MATERIAL (OPTIONAL UPLOADS)</h3>
+        <div class="upload-grid">
+          <label class="upload-card">
+            <input type="file" hidden>
+            <span>CVs or bios</span>
+          </label>
+          <label class="upload-card">
+            <input type="file" hidden>
+            <span>Letters of support</span>
+          </label>
+          <label class="upload-card">
+            <input type="file" hidden>
+            <span>Past grant summaries</span>
+          </label>
+          <label class="upload-card">
+            <input type="file" hidden>
+            <span>Whitepapers or research data</span>
+          </label>
+        </div>
+      </div>
+    </form>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <button class="btn-get-started" onclick="window.location.href='generating_proposal.html'">Generate Grant</button>
+    </div>
+  </main>
+  <script>
+    // Set grant title from localStorage
+    const title = localStorage.getItem('grantTitle');
+    document.querySelector('.grant-title').textContent = title || 'Grant Proposal';
+  </script>
+</body>
+</html> 
