@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>GrantWriterAI - Generating Proposal</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #e3f6f5 0%, #f8f9fa 60%, #d0e6ff 100%);
+    }
+    .gen-container {
+      background: #fff;
+      border: 2px solid #888;
+      max-width: 1100px;
+      width: 90vw;
+      min-height: 700px;
+      margin: 3.5rem auto 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+    .gen-spinner {
+      width: 72px;
+      height: 72px;
+      margin: 2.5rem auto 2rem auto;
+      display: block;
+    }
+    .gen-message {
+      font-size: 1.35rem;
+      text-align: center;
+      margin-bottom: 0.7rem;
+    }
+    .gen-subtext {
+      color: #444;
+      font-size: 1.08rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+    }
+    .gen-next-btn-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 2.2rem;
+    }
+    @media (max-width: 1200px) {
+      .gen-container { max-width: 98vw; }
+    }
+    @media (max-width: 700px) {
+      .gen-container { min-height: 400px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-flex">
+      <a href="home.html" style="text-decoration: none; color: inherit;">
+        <div class="logo">GrantWriter<span class="logo-accent">AI</span></div>
+      </a>
+      <button class="btn-login">My Account</button>
+    </div>
+  </nav>
+  <div class="gen-container">
+    <svg class="gen-spinner" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#222" stroke-width="5" stroke-dasharray="90 60" stroke-linecap="round"/>
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#22b14c" stroke-width="5" stroke-dasharray="20 130" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+    <div class="gen-message">Please wait while our AI generates your grant proposal!</div>
+    <div class="gen-subtext">Once complete, you will have an opportunity to read through the proposal before downloading and request changes as well</div>
+  </div>
+  <div class="gen-next-btn-wrapper">
+    <button class="btn-get-started" onclick="window.location.href='Finished_grant.html'">Next</button>
+  </div>
+</body>
+</html> 

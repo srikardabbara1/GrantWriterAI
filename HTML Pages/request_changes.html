@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>GrantWriterAI - Request Changes</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #e3f6f5 0%, #f8f9fa 60%, #d0e6ff 100%);
+    }
+    .request-container {
+      background: #fff;
+      border: 2px solid #888;
+      max-width: 1100px;
+      width: 90vw;
+      min-height: 700px;
+      margin: 3.5rem auto 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+      position: relative;
+    }
+    .request-instructions {
+      font-size: 1.18rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: #1976d2;
+      text-align: left;
+      width: 100%;
+      max-width: 900px;
+    }
+    .request-textarea-wrapper {
+      width: 100%;
+      max-width: 900px;
+      background: #e5e5e5;
+      border-radius: 8px;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      margin-bottom: 2.5rem;
+      padding: 2.5rem 2rem 1.5rem 2rem;
+    }
+    .request-textarea-label {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 0.7rem;
+    }
+    .request-textarea {
+      width: 100%;
+      min-height: 180px;
+      font-size: 1.13rem;
+      font-family: 'Inter', sans-serif;
+      border: none;
+      border-radius: 6px;
+      padding: 1.2rem;
+      resize: vertical;
+      background: #f7f7f7;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+      margin-bottom: 0.5rem;
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+    .request-textarea:focus {
+      box-shadow: 0 2px 8px #b2f7ef;
+      background: #fff;
+    }
+    .request-actions {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 1.2rem;
+      gap: 1.2rem;
+    }
+    .request-back-link {
+      font-size: 0.98rem;
+      color: #1976d2;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      margin-right: auto;
+      transition: color 0.2s;
+    }
+    .request-back-link:hover {
+      color: #22b14c;
+    }
+    @media (max-width: 1200px) {
+      .request-container { max-width: 98vw; }
+      .request-textarea-wrapper, .request-actions { max-width: 98vw; }
+    }
+    @media (max-width: 700px) {
+      .request-container { min-height: 400px; padding: 1.2rem 0.5rem; }
+      .request-textarea-wrapper { padding: 1.2rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-flex">
+      <a href="home.html" style="text-decoration: none; color: inherit;">
+        <div class="logo">GrantWriter<span class="logo-accent">AI</span></div>
+      </a>
+      <button class="btn-login">My Account</button>
+    </div>
+  </nav>
+  <div class="request-container">
+    <div class="request-instructions">
+      Provide any adjustments you'd like to make to your grant here. For best results, please be as specific as possible
+    </div>
+    <div class="request-textarea-wrapper">
+      <label for="llmInstructions" class="request-textarea-label">Modify Proposal Specific Instructions to LLM on what changes are needed</label>
+      <textarea id="llmInstructions" class="request-textarea" placeholder="e.g. Please expand the methodology section to include more details about the timeline and deliverables..."></textarea>
+    </div>
+    <div class="request-actions">
+      <button class="request-back-link" onclick="window.location.href='generating_proposal.html'">Back to Generating Proposal Page</button>
+      <button class="btn-get-started" onclick="window.location.href='Finished_grant.html'">Next</button>
+    </div>
+  </div>
+</body>
+</html> 
