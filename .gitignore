@@ -1,2 +1,6 @@
   GrantWriterAI.API/.env
 .env
+
+GrantWriterAI.UI/frontend/.env
+
+
