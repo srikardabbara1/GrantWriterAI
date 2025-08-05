@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '/public/styles.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import AutoFillPrompt from '../components/AutoFillPrompt';
 
 const ORG_SIZE_OPTIONS = [
   { value: 'small', label: 'Small (1–5)' },
@@ -96,6 +98,8 @@ const STEP_LABELS = [
 const IntakeForm = ({ onSave, onNext, savedData }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useAuth();
+  
   // Multi-step state
   const [step, setStep] = useState(1);
   const [orgInfo, setOrgInfo] = useState(savedData?.orgInfo || initialOrgInfo);
@@ -108,6 +112,10 @@ const IntakeForm = ({ onSave, onNext, savedData }) => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  
+  // Auto-fill state
+  const [showAutoFillPrompt, setShowAutoFillPrompt] = useState(false);
+  const [hasShownAutoFill, setHasShownAutoFill] = useState(false);
 
   // On mount, if title is passed from Home, prefill org_name
   useEffect(() => {
@@ -115,6 +123,14 @@ const IntakeForm = ({ onSave, onNext, savedData }) => {
       setOrgInfo(prev => ({ ...prev, org_name: location.state.title }));
     }
   }, [location.state]);
+
+  // Show auto-fill prompt for authenticated users
+  useEffect(() => {
+    if (user && !hasShownAutoFill && !savedData) {
+      setShowAutoFillPrompt(true);
+      setHasShownAutoFill(true);
+    }
+  }, [user, hasShownAutoFill, savedData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -187,11 +203,13 @@ const IntakeForm = ({ onSave, onNext, savedData }) => {
             body: JSON.stringify(data),
           });
           const result = await response.json();
-          if (result && result.result) {
-            navigate('/grant-result', { state: { grantText: result.result } });
-          } else {
-            setSubmitError('Failed to generate grant proposal.');
-          }
+                              if (result && result.result) {
+                      // Pass both the grant text and the form data
+                      const allFormData = { orgInfo, contactInfo, grantOpportunity, programDetails, budgetInfo, attachments, toneStyle };
+                      navigate('/grant-result', { state: { grantText: result.result, formData: allFormData } });
+                    } else {
+                      setSubmitError('Failed to generate grant proposal.');
+                    }
         } catch (err) {
           setSubmitError('An error occurred while generating the grant proposal.');
         }
@@ -227,12 +245,50 @@ const IntakeForm = ({ onSave, onNext, savedData }) => {
     setAttachments(prev => ({ ...prev, [name]: files[0] || null }));
   };
 
+  // Auto-fill handlers
+  const handleAutoFillAccept = (autoFillData) => {
+    if (autoFillData.contact_email) {
+      setContactInfo(prev => ({ ...prev, contact_email: autoFillData.contact_email }));
+    }
+    if (autoFillData.contact_name) {
+      setContactInfo(prev => ({ ...prev, contact_name: autoFillData.contact_name }));
+    }
+    if (autoFillData.org_name) {
+      setOrgInfo(prev => ({ ...prev, org_name: autoFillData.org_name }));
+    }
+    if (autoFillData.org_mission) {
+      setOrgInfo(prev => ({ ...prev, org_mission: autoFillData.org_mission }));
+    }
+    if (autoFillData.org_location) {
+      setOrgInfo(prev => ({ ...prev, org_location: autoFillData.org_location }));
+    }
+    setShowAutoFillPrompt(false);
+  };
+
+  const handleAutoFillDecline = () => {
+    setShowAutoFillPrompt(false);
+  };
+
+  const handleAutoFillClose = () => {
+    setShowAutoFillPrompt(false);
+    setHasShownAutoFill(true);
+  };
+
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(120deg, #e3f6f5 0%, #f8f9fa 60%, #d0e6ff 100%)' }}>
+      {showAutoFillPrompt && (
+        <AutoFillPrompt
+          onAccept={handleAutoFillAccept}
+          onDecline={handleAutoFillDecline}
+          onClose={handleAutoFillClose}
+        />
+      )}
       <nav>
         <div className="nav-flex">
-          <div className="logo">GrantWriter<span className="logo-accent">AI</span></div>
-          <button className="btn-login">My Account</button>
+          <div className="logo" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>GrantWriter<span className="logo-accent">AI</span></div>
+          <button className="btn-login" onClick={() => navigate('/auth')}>
+            {user ? `${user.email}` : 'Sign In'}
+          </button>
         </div>
       </nav>
       <main className="home-container" style={{ maxWidth: 900, minWidth: 500, margin: '4rem auto', background: '#fff', borderRadius: 24, boxShadow: '0 8px 32px rgba(0,0,0,0.12)', padding: '3.5rem 4.5rem 3.5rem 4.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

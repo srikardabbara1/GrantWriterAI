@@ -1,31 +1,50 @@
 Grant Proposal:
 
-Organization Information:
-Test is a medium-sized 501c3 organization based in Test, with a mission to [Organization Mission]. Since our establishment, we have been dedicated to making a positive impact in our community through [Briefly describe organization's work or projects]. For more information about us, please visit our website at [Organization Website].
+Organization Details:
+Name: Test College Fund
+Mission: Our mission is to provide financial support to students in need to help them pursue higher education.
+Year Founded: 2021
+Location: Seattle
+Size: Small
+Status: Other
 
 Contact Information:
-For any inquiries regarding this proposal, please contact [Contact Name] at [Contact Email], [Contact Title] of Test.
+Contact Name: Srikar Dabbara
+Email: srikardabbara1@gmail.com
 
 Grant Opportunity Details:
-We are seeking funding from [Funder Name] for our existing program, [Program Name]. The grant amount requested is $9999 to support our operational expenses. The deadline for this grant application is July 30, 2025. More details about the grant opportunity can be found at [Grant URL].
+Funder: Srikar
+Grant Title/URL: srikar.com
+Amount Requested: $99,997
+Deadline: August 5, 2025
+Type of Grant: Capital
+New or Existing Program: New
 
 Program Details:
-Our program, [Program Name], addresses the critical issue of [Problem Statement] among the target population of [Target Population]. The program aims to [Program Goals], and we have a solid evaluation plan in place to measure our impact. We collaborate with partners and stakeholders to maximize our reach and effectiveness. The program duration is [Program Duration].
+Program Name: Srikar College Fund
+Problem Statement: Many students lack financial resources to attend college, hindering their academic pursuits.
+Target Population: Students like myself in need of financial assistance for college education.
+Program Description: The Srikar College Fund is a new government grant program designed to provide financial aid to deserving students aiming to pursue higher education.
+Program Goals:
+1. Provide financial support to enable students to afford college tuition.
+Evaluation Plan: [To be added later upon further development.]
+Collaborators/Partners: [To be added later upon establishment of partnerships.]
+Program Duration: 4 years
 
 Budget Information:
-The total project budget for [Program Name] is $10,000, with an amount of $96 requested from this grant. The budget will be utilized as detailed in the budget use summary, ensuring that funds are allocated efficiently and effectively. We also have other funders supporting this program.
+Total Project Budget: $200,000
+Amount Requested: $99,997
+Budget Use Summary: The requested funds will primarily be allocated towards providing financial assistance to students to cover their college expenses.
+Other Funders: [No other funders currently involved.]
 
 Attachments:
-We have included the necessary attachments for this proposal, including our organization's logo, pitch deck or summary, and relevant financial documents.
+- Logo: [To be uploaded later.]
+- Pitch Deck or Summary: [To be uploaded later.]
+- 990 or Financials: [To be uploaded later.]
 
-Tone and Style:
-Our preference is for a data-driven approach in this proposal, while still incorporating personal stories to highlight the impact of our work.
+Tone Preference: Storytelling
 
-Conclusion:
-Test respectfully seeks funding from [Funder Name] to support the continuation and expansion of our impactful program, [Program Name]. With your investment, we can further empower our community and create lasting change for those we serve.
+Executive Summary:
+The Test College Fund is requesting a capital grant of $99,997 from the Srikar foundation to launch the Srikar College Fund, a new program aimed at providing financial support to students who lack the necessary funds to pursue higher education. With a strong commitment to helping students achieve their academic aspirations, our program seeks to address the pressing issue of college affordability and ensure that all qualified students have access to the education they deserve. The grant funds will be used to directly assist students in covering their college expenses and setting them on the path to academic success. We look forward to the opportunity to partner with the Srikar foundation in making a meaningful impact in the lives of aspiring students.
 
-Thank you for considering our proposal. We look forward to the opportunity to discuss our project further and answer any questions you may have.
-
-Sincerely,
-[Contact Name]
-[Organization Name]
+Please let us know if you need any further information or clarification.

@@ -16,8 +16,12 @@ const openai = new OpenAI({
 
 app.use(express.json());
 
-app.get(' /', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello World');
+});
+
+app.get('/test', (req, res) => {
+  res.json({ message: 'Backend is working!' });
 });
 
 app.post('/api/generate', async (req, res) => {
@@ -56,6 +60,77 @@ Please return only the grant proposal text, ready for review.
   } catch (error) {
     console.error('OpenAI API error:', error);
     res.status(500).json({ error: 'Failed to generate response from OpenAI.' });
+  }
+});
+
+app.post('/api/search-grants', async (req, res) => {
+  console.log('Received search request:', req.body);
+  const searchData = req.body;
+  if (!searchData) {
+    console.log('No search data provided');
+    return res.status(400).json({ error: 'Search data is required.' });
+  }
+
+  // Craft the prompt for grant search
+  const prompt = `
+You are a grant research specialist. Based on the following organization and project information, recommend 5-8 specific grants that would be a good match.
+
+Organization and Project Information:
+${JSON.stringify(searchData, null, 2)}
+
+Please return a JSON array of grant objects with the following structure:
+[
+  {
+    "title": "Grant Title",
+    "funder": "Funder Name",
+    "amount": "Funding amount (e.g., $50,000)",
+    "deadline": "Application deadline (e.g., March 15, 2024)",
+    "description": "Brief description of the grant opportunity",
+    "eligibility": "Eligibility requirements",
+    "url": "https://example.com/grant-details",
+    "categories": ["category1", "category2"],
+    "organization_types": ["nonprofit", "school"],
+    "requirements": ["Requirement 1", "Requirement 2", "Requirement 3"]
+  }
+]
+
+Make sure the grants are realistic, well-known funders, and match the organization type, project category, and funding amount requested. Include a mix of federal, state, and private foundation grants.
+  `;
+
+  try {
+    console.log('Sending request to OpenAI...');
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [
+        { role: 'system', content: 'You are a grant research specialist. Return only valid JSON arrays of grant recommendations.' },
+        { role: 'user', content: prompt }
+      ],
+      max_tokens: 3000
+    });
+    
+    const aiResponse = completion.choices[0].message.content;
+    console.log('OpenAI response:', aiResponse);
+    
+    // Parse the JSON response
+    let grants;
+    try {
+      // Extract JSON from the response (in case there's extra text)
+      const jsonMatch = aiResponse.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        grants = JSON.parse(jsonMatch[0]);
+      } else {
+        grants = JSON.parse(aiResponse);
+      }
+    } catch (parseError) {
+      console.error('Error parsing AI response:', parseError);
+      console.log('Raw AI response:', aiResponse);
+      return res.status(500).json({ error: 'Failed to parse grant recommendations.' });
+    }
+
+    res.json({ grants: grants });
+  } catch (error) {
+    console.error('OpenAI API error:', error);
+    res.status(500).json({ error: 'Failed to search for grants.' });
   }
 });
 

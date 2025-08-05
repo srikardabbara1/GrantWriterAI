@@ -44,7 +44,8 @@ const Auth = () => {
         }
       }
     } catch (err) {
-      setError('An unexpected error occurred')
+      console.error('Auth error:', err)
+      setError(`An unexpected error occurred: ${err.message}`)
     }
     
     setLoading(false)

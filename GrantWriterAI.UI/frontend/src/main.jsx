@@ -7,6 +7,8 @@ import Home from './pages/Home.jsx';
 import GrantResult from './pages/GrantResult.jsx';
 import IntakeForm from './pages/IntakeForm.jsx';
 import Auth from './pages/Auth.jsx';
+import FindGrants from './pages/FindGrants.jsx';
+import GrantResults from './pages/GrantResults.jsx';
 import { AuthProvider } from './contexts/AuthContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,11 +16,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/grant-result" element={<GrantResult />} />
-          <Route path="/intake" element={<IntakeForm />} />
-          <Route path="/auth" element={<Auth />} />
+                  <Route path="/" element={<App />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/grant-result" element={<GrantResult />} />
+        <Route path="/intake" element={<IntakeForm />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/find-grants" element={<FindGrants />} />
+        <Route path="/grant-results" element={<GrantResults />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

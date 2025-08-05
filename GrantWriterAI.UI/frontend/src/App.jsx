@@ -1,15 +1,22 @@
 import '/public/styles.css';
 import { useNavigate } from 'react-router-dom';
 import grantTemplateImg from './assets/grantproposal_template.png';
+import { useAuth } from './contexts/AuthContext';
+import UserProfileDropdown from './components/UserProfileDropdown';
 
 function App() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   return (
     <>
       <nav>
         <div className="nav-flex">
           <div className="logo">GrantWriter<span className="logo-accent">AI</span></div>
-          <button className="btn-login" onClick={() => navigate('/auth')}>Login or Sign Up</button>
+          {user ? (
+            <UserProfileDropdown />
+          ) : (
+            <button className="btn-login" onClick={() => navigate('/auth')}>Login or Sign Up</button>
+          )}
         </div>
       </nav>
       {/* Hero Section: Vertically centered, arrow at bottom of viewport */}

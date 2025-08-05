@@ -51,13 +51,21 @@ export const AuthProvider = ({ children }) => {
 
   const signIn = async (email, password) => {
     if (!supabase) {
+      console.error('Supabase not configured')
       return { data: null, error: { message: 'Supabase not configured' } }
     }
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    return { data, error }
+    try {
+      console.log('Attempting sign in with:', email)
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      console.log('Sign in result:', { data, error })
+      return { data, error }
+    } catch (err) {
+      console.error('Sign in error:', err)
+      return { data: null, error: { message: err.message } }
+    }
   }
 
   const signOut = async () => {
